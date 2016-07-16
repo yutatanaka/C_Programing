@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1-1まずは表示を行う_List1-1.cpp" />
+    <ClCompile Include="1-1まずは表示を行う_List1-3.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{896067E1-14B9-4684-A8E7-DC6436E2E8B3}</ProjectGuid>
