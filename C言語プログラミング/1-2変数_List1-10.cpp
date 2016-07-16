@@ -16,5 +16,6 @@ int main()
 	printf("vyの値は%dです。\n", vy);		/* vyの値を表示 */
 
 	getchar();
+	
 	return 0;
 }
