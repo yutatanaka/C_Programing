@@ -13,6 +13,7 @@ int main()
 	int a, b;
 
 	puts("“ñ‚Â‚Ì®”‚ğ“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+
 	printf("®”aF");   scanf("%d", &a);
 	printf("®”bF");   scanf("%d", &b);
 
