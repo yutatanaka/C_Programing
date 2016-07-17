@@ -22,6 +22,5 @@ int main()
 	printf("•W€‘Ìd‚Í%.1f", (y - 100) * 0.9);
 
 	getchar();
-	getchar();
 	return 0;
 }
