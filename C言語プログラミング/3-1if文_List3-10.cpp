@@ -2,7 +2,7 @@
 /*
 	入れ子になったif文
 
-	読み込んだ整数値の符号を判定
+	読み込んだ整数値が正であれば偶数/奇数の別を判定して表示
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -33,4 +33,5 @@ int main()
 
 	getchar();
 	return 0;
+
 }
