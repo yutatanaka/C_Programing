@@ -17,10 +17,11 @@ int main()
 	printf("整数2：");   scanf("%d", &n2);
 	printf("整数3：");   scanf("%d", &n3);
 
-	min = (n1 < n2) ? n1 : n2;
-	min = (n2 < n3) ? n2 : n3;
+	min = (n1 < n2) ? ( n1 < n3 )? n1 : n3 : ( n2 < n3 )? n2 : n3 ;
 
-	printf("大きいほうの値は%dです。\n", min);
+//	min = (n2 < n3) ? n2 : n3;
+
+	printf("最少値の値は%dです。\n", min);
 
 	getchar();
 	getchar();
