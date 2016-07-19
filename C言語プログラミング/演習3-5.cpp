@@ -10,6 +10,7 @@
 
 int main()
 {
+	/*
 	int num1, num2, num3, min;
 
 	puts("®”1F");   scanf("%d", &num1);
@@ -27,6 +28,20 @@ int main()
 	}
 
 	printf("Å¬’l‚Í%d‚Å‚·B\n", min);
+	*/
+
+	int a = 10;
+	int b = 20;
+	int c = 0;
+
+	c = (a < b);
+	printf("%d\n", c);
+
+	c = (a > b);
+	printf("%d\n", c);
+
+	c = (a == b);
+	printf("%d\n", c);
 
 	getchar();
 	return 0;
