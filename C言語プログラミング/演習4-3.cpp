@@ -19,13 +19,10 @@ int main()
 	{
 		printf("%d ", no);
 		no--;
+		if (no <= 0)
+		{
+			getchar();
+		}
 	}
-
-	if (no <= 0)
-	{
-		/* ‰½‚à‚µ‚È‚¢ */
-	}
-
-	getchar();
 	return 0;
 }
