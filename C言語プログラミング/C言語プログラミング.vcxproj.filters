@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="3-2switch文_List3-20.cpp">
+    <ClCompile Include="演習3-12.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
