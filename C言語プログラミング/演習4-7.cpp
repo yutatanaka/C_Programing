@@ -24,7 +24,7 @@ int main()
 
 	while (i <= no)
 	{
-		printf("%d", i);
+		printf("%d ", i);
 		i *= 2;
 	}
 
