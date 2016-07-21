@@ -31,7 +31,6 @@ int main()
 		{
 			printf("*\n");
 			i++;
-			//printf("\n");
 		}
 	}
 

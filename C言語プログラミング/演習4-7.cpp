@@ -28,6 +28,11 @@ int main()
 		i *= 2;
 	}
 
+	for (int i = 0; i < no; ++i)
+	{
+		printf("%d ",  1<<i );
+	}
+
 	getchar();
 	return 0;
 }
