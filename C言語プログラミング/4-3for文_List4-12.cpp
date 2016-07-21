@@ -1,8 +1,8 @@
 
 /*
-	for文
+	for文による一定回数の繰返し
 
-	読み込んだ正の整数値までカウントアップ(for文)
+	読み込んだ整数の個数だけ＊を連続表示(for文)
 */
 
 #define _CRT_SECURE_NO_WARNINGS
@@ -12,12 +12,12 @@ int main()
 {
 	int i, no;
 
-	printf("正の整数を入力してください：");
+	printf("正の整数：");
 	scanf("%d", &no);
 
-	for (i = 0; i <= no; i++)
+	for (i = 1; i <= no; i++)
 	{
-		printf("%d ", i);
+		putchar('*');
 	}
 	putchar('\n');
 
