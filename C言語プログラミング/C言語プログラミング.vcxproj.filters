@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="4-4多重ループ_List4-20.cpp">
+    <ClCompile Include="演習4-20.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
