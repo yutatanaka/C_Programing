@@ -12,33 +12,32 @@
 int main()
 {
 	int i, j, k, sum = 0;
-	int value1[4][3];
-	int value2[3][4];
+	int matrix1[4][3];
+	int matrix2[3][4];
 
 	puts("4行3列の行列と3行4列の行列の積を求めます。");
-	puts("4行3列の行列を入力してください。(数字と数字の間は半角スペース)");
-
+	puts("4行3列の行列を入力して下さい。（数字と数字の間は半角スペース）");
 	for (i = 0; i < 4; i++)
 	{
-		scanf("%d %d %d", &value1[i][0], &value1[i][1], &value1[i][2]);
+		scanf("%d %d %d", &matrix1[i][0], &matrix1[i][1], &matrix1[i][2]);
 	}
-	printf("3行4列の行列を入力してください。(数字と数字の間は半角スペース)\n");
 
+	puts("3行4列の行列を入力して下さい。（数字と数字の間は半角スペース）");
 	for (i = 0; i < 3; i++)
 	{
-		scanf("%d %d %d %d", &value2[i][0], &value2[i][1], &value2[i][2], &value2[i][3]);
+		scanf("%d %d %d %d", &matrix2[i][0], &matrix2[i][1], &matrix2[i][2], &matrix2[i][3]);
 	}
-	printf("4行3列の行列と3行4列の行列の積は\n");
 
+	puts("4行3列の行列と3行4列の行列の積は");
 	for (k = 0; k < 4; k++)
 	{
-		for (i = 0; i < 4; i++)
+		for (j = 0; j < 4; j++)
 		{
-			for (j = 0; j < 3; j++)
+			for (i = 0; i < 3; i++)
 			{
-				sum = sum + (value1[k][j] * value2[j][i]);
+				sum = sum + (matrix1[k][i] * matrix2[i][j]);
 			}
-			printf("%3d ", sum);
+			printf("%3d", sum);
 			sum = 0;
 		}
 		printf("\n");
