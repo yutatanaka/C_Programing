@@ -35,8 +35,7 @@ int rev_int(int num)
 		do{
 			tmp = tmp * 10 + num % 10;
 			num /= 10;
-			printf("num = %d\n", num);
-			printf("tmp = %d\n", tmp);
+
 		} while (num > 0);
 	}
 	return tmp;
