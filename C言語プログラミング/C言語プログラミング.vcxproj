@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="6-3有効範囲と記憶域期間_List6-19.cpp" />
+    <ClCompile Include="演習6-14.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{896067E1-14B9-4684-A8E7-DC6436E2E8B3}</ProjectGuid>
