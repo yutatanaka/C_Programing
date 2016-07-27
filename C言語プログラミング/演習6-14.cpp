@@ -1,10 +1,8 @@
 
 /*
 	演習6-14
-
 	静的記憶域期間が与えられたdouble型配列の全要素が0.0で初期化されることを確認するプログラムを作成せよ。
 */
-
 
 #include <stdio.h>
 
@@ -18,7 +16,6 @@ int main()
 		printf("array[%d] = %d\n", i, array[i]);
 	}
 
-	getchar();
 	getchar();
 	return 0;
 }
