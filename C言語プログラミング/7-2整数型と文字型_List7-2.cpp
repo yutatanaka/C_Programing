@@ -15,7 +15,7 @@ int main()
 	if (CHAR_MIN)
 		puts("符号付きの型です。");
 	else
-		puts("符号無しの型です。");
+		puts("符号無しの型です。"); 
 
 	getchar();
 	return 0;
