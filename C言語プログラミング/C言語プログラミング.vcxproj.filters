@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="7-2整数型と文字型_List7-5.cpp">
+    <ClCompile Include="シェーカーソート.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
