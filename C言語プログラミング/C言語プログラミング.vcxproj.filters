@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="8-1関数形式マクロ_List8-1.cpp">
+    <ClCompile Include="8-1関数形式マクロ_List8-2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
