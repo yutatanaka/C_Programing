@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="10-2ポインタの関数_List_関数の引数としてのポインタ.cpp">
+    <ClCompile Include="10-2ポインタと関数_List10-4復習.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
