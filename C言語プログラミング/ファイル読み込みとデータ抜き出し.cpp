@@ -6,9 +6,9 @@ int main()
 {
 	std::string str = "xxxxxx vertex=";
 	str += "-100 0 -100";
-	str += "100 0 -100";
-	str += "-100, 0, 100";
-	str += "100 0 100";
+	str += " 100 0 -100";
+	str += " -100 0 100";
+	str += " 100 0 100";
 
 	int n = str.find("vertex=");
 
