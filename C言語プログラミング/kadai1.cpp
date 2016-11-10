@@ -32,24 +32,19 @@ int main(int argc, char *argv[])
 	{
 		std::string str = buffer;
 		//printf("%s\n", buffer);
-		
-
-		strsum += str;
-		printf("%s\n", strsum);
-		getchar();
-		//int n = str.find("ver");
-		//if (n >= 0)
-		//{
-		//	strsum = str.substr(n, 10);
-		//	printf("%s\n", strsum.c_str() );
-		//	getchar();
-		//}
-		//if (n >= 0)
-		//{
-		//	strsum = str.substr(n, 12);
-		//	printf("%s\n", strsum.c_str());
-		//	getchar();
-		//}
+		int n = str.find("ver");
+		if (n >= 0)
+		{
+			strsum = str.substr(n, 10);
+			printf("%s\n", strsum.c_str() );
+			getchar();
+		}
+		if (n >= 0)
+		{
+			strsum = str.substr(n, 12);
+			printf("%s\n", strsum.c_str());
+			getchar();
+		}
 		
 		
 		
