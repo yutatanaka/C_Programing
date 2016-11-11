@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="string応用操作.cpp">
+    <ClCompile Include="string文字列への変換.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
