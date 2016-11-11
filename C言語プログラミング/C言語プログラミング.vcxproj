@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="string部分文字列.cpp" />
+    <ClCompile Include="string文字列検索.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{896067E1-14B9-4684-A8E7-DC6436E2E8B3}</ProjectGuid>

@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="string部分文字列.cpp">
+    <ClCompile Include="string文字列検索.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
