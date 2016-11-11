@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ファイル読み込みとデータ抜き出し.cpp">
+    <ClCompile Include="string基本操作.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
