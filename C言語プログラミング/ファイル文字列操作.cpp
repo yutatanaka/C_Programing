@@ -16,6 +16,9 @@ int main()
 	long fileSize;
 	char str[BUFFER_SIZE];
 
+	// バッファの初期化
+	memset(str, NULL, sizeof(char) * BUFFER_SIZE);
+
 	// ファイルを書き込みモードで開く
 	fp = fopen(fileName, "r");
 
