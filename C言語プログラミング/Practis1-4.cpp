@@ -20,14 +20,21 @@ int main()
 		if (tensu >= 80 && tensu <= 100)
 		{
 			printf("“_”:%d •]‰¿:A\n", tensu);
+			break;
 		}
 		else if (tensu >= 60 && tensu <= 79)
 		{
 			printf("“_”:%d •]‰¿:B\n", tensu);
+			break;
 		}
 		else if (tensu >= 0 && tensu <= 59)
 		{
 			printf("“_”:%d •]‰¿:C\n", tensu);
+			break;
+		}
+		else
+		{
+			continue;
 		}
 	}
 	getchar();
