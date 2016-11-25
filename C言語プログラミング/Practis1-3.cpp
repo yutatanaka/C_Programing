@@ -38,6 +38,5 @@ int main()
 	printf("—¿‹à‡Œv%d", goukei);
 
 	getchar();
-	getchar();
 	return 0;
 }
