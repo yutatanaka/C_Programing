@@ -26,24 +26,23 @@ int main()
 		{
 		case 1:
 			ryokin = 800;
-			kingaku = ninzu * ryokin;
-			printf("‹àŠz%d —¿‹à%d", kingaku, ryokin);
+		
 			break;
 		case 2:
 			ryokin = 1000;
-			kingaku = ninzu * ryokin;
-			printf("‹àŠz%d —¿‹à%d", kingaku, ryokin);
+	
 			break;
 		case 3:
 			ryokin = 1500;
-			kingaku = ninzu * ryokin;
-			printf("‹àŠz%d —¿‹à%d", kingaku, ryokin);
+		
 			break;
 		default:
 			printf("‚à‚¤ˆê“x“ü—Í‚µ‚Ä‚­‚¾‚³‚¢\n");
 			continue;
 		}
 	}
+	kingaku = ninzu * ryokin;
+	printf("‹àŠz%d —¿‹à%d", kingaku, ryokin);
 	
 	getchar();
 	getchar();
