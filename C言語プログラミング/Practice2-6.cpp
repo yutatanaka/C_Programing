@@ -14,20 +14,20 @@ int main()
 
 	/* 入力処理 */
 	printf("入力してください。\n");
-	printf("元金＝");	scanf("%d", &gankin);
-	printf("利率＝");	scanf("%d", &ritu);
-	printf("期間＝");	scanf("%d", &kikan);
+	printf("元金(円)＝");	scanf("%d", &gankin);
+	printf("利率(％)＝");	scanf("%d", &ritu);
+	printf("期間(年)＝");	scanf("%d", &kikan);
 
 	goukei = gankin;
 
 	/* 期間の回数だけ次の処理を繰り返す */
-	for (i = 0; i < kikan; i++)
+	for (i = 1; i <= kikan; i++)
 	{
 		goukei = goukei * (100 + ritu) / 100;
 	}
 
 	/* 元利合計を表示する */
-	printf("元利合計＝%d", goukei);
+	printf("元利合計＝%d 円\n", goukei);
 
 	getchar();
 	getchar();
