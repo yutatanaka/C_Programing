@@ -47,7 +47,7 @@ int main()
 
 	printf("----------------ˆÃ†‰»Œã‚Ì•¶š—ñ----------------\n");
 	printf("\n");
-	printf("%s\n", out_mojiretu);
+	printf("%s", out_mojiretu);
 	printf("\n");
 	printf("------------------------------------------------\n");
 	getchar();
