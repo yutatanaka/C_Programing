@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Practice5-5.cpp">
+    <ClCompile Include="Practice6-1.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
