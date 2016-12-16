@@ -22,7 +22,7 @@ void Henshu(int suuji, char *moji)
 		suuji0 = suuji;
 	}
 
-	 /* ③カウンタiが13未満で、数字０(suuji0)が0でない間は、次の④～⑥を繰り返す */
+	/* ③カウンタiが13未満で、数字０(suuji0)が0でない間は、次の④～⑥を繰り返す */
 	for (i = 0, j = 0; i < 13 && suuji0 != 0; i++, j++)
 	{
 		/* ④数字0を10で割り、商を数字0(suuji0)へ、余りを数字1(suuji1)へ格納する */
@@ -38,25 +38,24 @@ void Henshu(int suuji, char *moji)
 			j++;
 			mojiretu[j] = ',';
 		}
-
-		/* 数字(suuji)がマイナスのときはマイナス符号を文字列へ格納する */
-		if (suuji < 0)
-		{
-			mojiretu[j] = '-';
-			j++;
-		}
-
-		/* 文字列の最後に'\0'を格納する */
-		mojiretu[j] = '\0';
-
-		/* 文字列(mojiretu)を最終結果の文字(moji)に変換する
-		このときmojiretuの添え字をiとしmojiの添え字をkとする*/
-		k = j - 1;
-		for (i = 0; mojiretu[i] != '\0'; i++)
-		{
-			j = k - i;
-			*(moji + j) = mojiretu[i];
-		}
-		*(moji + i) = '\0';
 	}
+	/* 数字(suuji)がマイナスのときはマイナス符号を文字列へ格納する */
+	if (suuji < 0)
+	{
+		mojiretu[j] = '-';
+		j++;
+	}
+
+	/* 文字列の最後に'\0'を格納する */
+	mojiretu[j] = '\0';
+
+	/* 文字列(mojiretu)を最終結果の文字(moji)に変換する
+	このときmojiretuの添え字をiとしmojiの添え字をkとする*/
+	k = j - 1;
+	for (i = 0; mojiretu[i] != '\0'; i++)
+	{
+		j = k - i;
+		*(moji + j) = mojiretu[i];
+	}
+	*(moji + i) = '\0';
 }
