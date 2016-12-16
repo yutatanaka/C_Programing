@@ -9,9 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "henshu.h"
 
-/* 関数のプロトタイプ宣言 */
-void Henshu(int, char*);
 
 int main()
 {
@@ -63,7 +62,8 @@ int main()
 		}
 		/* 編集関数を呼び出して基本給の3桁ごとにカンマをつける */
 		Henshu(kihonkyu_t[no], kihonkyux);
-		printf("%04d %-15s %11s", bango_t[no], simei_t[no], kihonkyux);
+		printf("___%2d     ", no + 1);
+		printf("%04d %-15s %8s\n", bango_t[no], simei_t[no], kihonkyux);
 
 		if (kensu >= 10 || no == max)
 		{
