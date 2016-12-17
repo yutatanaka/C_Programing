@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="単位の計算.cpp">
+    <ClCompile Include="奇数か偶数.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
