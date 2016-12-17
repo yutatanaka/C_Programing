@@ -8,17 +8,27 @@
 
 int main()
 {
-	int sum = 0; 
-	int i, n;
+	int m;		// ‰€
+	int n;		// Œö·
 
-	printf("“™·”—ñ‚ÌãŒÀF");	scanf("%d", &n);
+	scanf("%d %d", &m, &n);
 
-	for (i = 1; i <= n; i++)
+	if (m >= 1 && m <= 20 && n >= 1 && n <= 20)
 	{
-		sum = sum + i;
+		for (int i = 1; i <= 10; i++)
+		{
+			if (i == 10)
+			{
+				printf("%d \n", m);
+			}
+			else
+			{
+				printf("%d ", m);
+			}
+				m += n;
+			
+		}
 	}
-
-	printf("1+2+3+....+%d = %d\n", n, sum);
 
 	getchar();
 	getchar();
