@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="文字列.cpp">
+    <ClCompile Include="等差数列の和.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
