@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="fscanf_Practice.cpp">
+    <ClCompile Include="文字列.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
