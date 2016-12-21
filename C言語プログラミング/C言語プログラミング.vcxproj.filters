@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Eメールアドレス.cpp">
+    <ClCompile Include="ループ練習.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
