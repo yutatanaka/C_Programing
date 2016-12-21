@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="FizzBuzz.cpp">
+    <ClCompile Include="素数判定.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
