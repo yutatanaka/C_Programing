@@ -11,11 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="henshu.cpp" />
-    <ClCompile Include="Practice7-2.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="henshu.h" />
+    <ClCompile Include="Practice7-3.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{896067E1-14B9-4684-A8E7-DC6436E2E8B3}</ProjectGuid>
