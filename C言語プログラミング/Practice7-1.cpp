@@ -49,7 +49,7 @@ void Touroku(int &shurui)
 
 		/* 顧客レコードをファイルに出力する。fwriteを使用する */
 		//fwrite(&krec, sizeof(KOKYAKU_M), 1, fp);
-		fprintf(fp, "%d %s %d", krec.bango, krec.namae, krec.zandaka);
+		fprintf(fp, "%d %s %d\n", krec.bango, krec.namae, krec.zandaka);
 		fclose(fp);
 	}
 	
