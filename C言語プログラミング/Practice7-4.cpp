@@ -96,7 +96,7 @@ void Master_Output()
 		krec.bango = ktbl[no].bango;
 		strcpy(krec.namae, ktbl[no].namae);
 		krec.zandaka = ktbl[no].zandaka;
-		fwrite(&krec, sizeof(KOKYAKU_M), 1, fpm2);		/* データ　出力 */
+		fprintf(fpm2, "%d %s %d\n", krec.bango, krec.namae, krec.zandaka);/* データ　出力 */
 	}
 	/* ③出力が終わったらファイルをクローズし、出力件数を表示し、"正常終了"と表示する */
 	fclose(fpm2);
