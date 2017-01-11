@@ -11,7 +11,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Practice7-5.cpp" />
+    <ClCompile Include="probex5-5.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{896067E1-14B9-4684-A8E7-DC6436E2E8B3}</ProjectGuid>
