@@ -27,7 +27,7 @@ int main()
 		i++;
 	}
 
-	printf("•¶š—ñ‚Ì’·‚³F%d", len);
+	printf("•¶š—ñ%s‚Ì’·‚³F%d", string, len);
 
 	/* ƒƒ‚ƒŠ‚Ì‰ğ•ú */
 	free(string);
