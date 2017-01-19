@@ -58,7 +58,7 @@ int main()
 
 	/* データを挿入 */
 	memcpy(pp, string_s, s_size);
-	pp += 26;
+	pp += 3;
 	memcpy(pp, string_b, b_size);
 	
 	/* ファイルクローズ */
@@ -72,6 +72,9 @@ int main()
 	/* ファイルクローズ */
 	fclose(fpw);
 
+	free(string_s);
+	free(string_b);
+	free(p);
 	getchar();
 	return 0;
 }
