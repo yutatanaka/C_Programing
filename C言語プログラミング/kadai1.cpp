@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+bool isNumberString(char);
+
 int main()
 {
 	int i;
@@ -38,23 +40,47 @@ int main()
 	p += strlen("vertex 4 {");
 
 	i = 0;
+
+	while (!isNumberString(*p)) p++;
+
+	/* '}'‚Ü‚Åƒ‹[ƒv‚ð‰ñ‚· */
 	while (*p != '}')
 	{
-		if ((*p >= '0') && (*p <= '9') || (*p == '-'))
+
+		if (isNumberString(*p))
 		{
 			vertex[i] = atof(p);
 			printf("%f\n", vertex[i]);
 
-			while (*p != ' ')
-			{
-				p++;
-			}
+
+			while (isNumberString(*p)) p++;
+
+
 			i++;
 		}
-		p++;
+		p++ ;
 	}
 	
 	free(str);
 	getchar();
 	return 0;
+}
+
+bool isNumberString(char no)
+{
+	if ((no >= '0') && (no <= '9'))
+	{
+		return true;
+	}
+	if (no == '-')
+	{
+		return true;
+	}
+	if (no == '.')
+	{
+		return true;
+	}
+
+
+	return false;
 }
