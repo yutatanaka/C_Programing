@@ -14,7 +14,7 @@ int main()
 	char *fileName = "cube.mqo";
 	char *str, *p, *pp;
 	FILE *fp;
-
+	
 	/* ファイルが存在しなければエラー処理 */
 	if ((fp = fopen(fileName, "r")) == NULL)
 	{
@@ -26,11 +26,11 @@ int main()
 	fseek(fp, 0, SEEK_END);
 	size = ftell(fp);
 	fseek(fp, 0, SEEK_SET);
-
+	
 	/* サイズを元にファイル分のメモリ確保し、全て初期化 */
 	str = (char*)malloc(size + 1);
 	memset(str, '\0', size + 1);
-
+	
 	/* ファイルを読み込んだあとファイルを閉じる */
 	fread(str, sizeof(char), size, fp);
 	fclose(fp);
@@ -58,9 +58,9 @@ int main()
 
 			i++;
 		}
-		p++;
+		p++ ;
 	}
-
+	
 	free(str);
 	getchar();
 	return 0;
