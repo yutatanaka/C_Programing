@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="練習問題1_3.cpp">
+    <ClCompile Include="独Ｃ_変数の宣言と値の代入_2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
