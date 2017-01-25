@@ -13,6 +13,5 @@ int main()
 	num = 1000;
 	printf("num‚Í %d\n", num);
 
-	getchar();
 	return 0;
 }
