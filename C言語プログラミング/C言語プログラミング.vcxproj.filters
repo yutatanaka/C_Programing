@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="独Ｃ_算術式の計算_1.cpp">
+    <ClCompile Include="独Ｃ_算術式の計算_2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
