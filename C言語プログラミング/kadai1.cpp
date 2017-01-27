@@ -30,7 +30,7 @@ typedef struct
 	VECTOR3 vertex[4];
 	float vertices[15];
 	int indices[4];
-	int triangleIndices[][3];
+	int triangleIndices[][4];
 }SHAPE;
 SHAPE shape;
 
@@ -40,45 +40,25 @@ typedef struct
 }STRING;
 STRING string;
 
+/* プロトタイプ宣言 */
 bool isNumberString(char);
 bool FileOperation(char*, STRING*);
 void StringOperation();
-
+void TriangleSplit();
+void Output();
 
 int main()
 {
 	int i, k;
-
 	char *fileName = "cube.mqo";
 
-	/* ファイル操作関数 */
 	FileOperation(fileName, &string);
 
-	/* 文字列操作関数 */
 	StringOperation();
 
-	/* 4頂点インデックスであれば */
-	i = 0;
-	if (data.vertexNumber == 4)
-	{
-		/* 3頂点*2の形に分解する */
-		shape.triangleIndices[i][0] = shape.indices[0];
-		shape.triangleIndices[i][1] = shape.indices[1];
-		shape.triangleIndices[i][2] = shape.indices[2];
+	TriangleSplit();
 
-		i++;
-
-		shape.triangleIndices[i][0] = shape.indices[0];
-		shape.triangleIndices[i][1] = shape.indices[2];
-		shape.triangleIndices[i][2] = shape.indices[3];
-	}
-	
-	printf("\n%d %d %d\n", shape.triangleIndices[0][0], shape.triangleIndices[0][1], shape.triangleIndices[0][2]);
-	printf("%d %d %d\n", shape.triangleIndices[1][0], shape.triangleIndices[1][1], shape.triangleIndices[1][2]);
-
-
-	
-	
+	Output();
 
 	free(string.s);
 	getchar();
@@ -132,13 +112,12 @@ bool FileOperation(char* fileName, STRING *str)
 
 void StringOperation()
 {
-	int i;
 
 	/* 目当ての文字列の検索を行い、そこまで読み飛ばす */
 	string.p = strstr(string.s, "vertex 4 {");
 	string.p += strlen("vertex 4 {");
 
-	i = 0;
+	int i = 0;
 	/* 該当する文字でなければ、*pを1つ進める */
 	while (!isNumberString(*string.p)) string.p++;
 
@@ -181,4 +160,31 @@ void StringOperation()
 		}
 		string.p++;
 	}
+}
+
+void TriangleSplit()
+{
+	/* 4頂点インデックスであれば */
+	int i = 0;
+	if (data.vertexNumber == 4)
+	{
+		/* 3頂点*2の形に分解する */
+		shape.triangleIndices[i][0] = shape.indices[0];
+		shape.triangleIndices[i][1] = shape.indices[1];
+		shape.triangleIndices[i][2] = shape.indices[2];
+
+		i++;
+
+		shape.triangleIndices[i][0] = shape.indices[0];
+		shape.triangleIndices[i][1] = shape.indices[2];
+		shape.triangleIndices[i][2] = shape.indices[3];
+	}
+}
+
+void Output()
+{
+
+	printf("\n%d %d %d\n", shape.triangleIndices[0][0], shape.triangleIndices[0][1], shape.triangleIndices[0][2]);
+	printf("%d %d %d\n", shape.triangleIndices[1][0], shape.triangleIndices[1][1], shape.triangleIndices[1][2]);
+
 }
