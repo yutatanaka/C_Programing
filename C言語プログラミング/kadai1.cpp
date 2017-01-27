@@ -4,8 +4,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-bool isNumberString(char);
-
 /* Header部分 */
 typedef struct
 {
@@ -21,106 +19,68 @@ typedef struct
 }DATAFORMAT;
 DATAFORMAT data;
 
+typedef struct
+{
+	float x, y, z;
+	
+}VECTOR3;
+
+typedef struct
+{
+	VECTOR3 vertex[4];
+	float vertices[15];
+	int indices[4];
+	int triangleIndices[][3];
+}SHAPE;
+SHAPE shape;
+
+typedef struct
+{
+	char *s, *p;
+}STRING;
+STRING string;
+
+bool isNumberString(char);
+bool FileOperation(char*, STRING*);
+void StringOperation();
+
+
 int main()
 {
 	int i, k;
-	long size;
-	int indices[4] = { 0 };
-	int triangleIndices[][4] = { 0 };
-	float vertices[15] = { 0 };
+
 	char *fileName = "cube.mqo";
-	char *str, *p;
-	FILE *fp;
 
-	/* ファイルが存在しなければエラー処理 */
-	if ((fp = fopen(fileName, "r")) == NULL)
-	{
-		printf("ファイルオープン失敗\n");
-		return -1;
-	}
+	/* ファイル操作関数 */
+	FileOperation(fileName, &string);
 
-	/* ファイルのサイズを求める*/
-	fseek(fp, 0, SEEK_END);
-	size = ftell(fp);
-	fseek(fp, 0, SEEK_SET);
+	/* 文字列操作関数 */
+	StringOperation();
 
-	/* サイズを元にファイル分のメモリ確保し、全て初期化 */
-	str = (char*)malloc(size + 1);
-	memset(str, '\0', size + 1);
-
-	/* ファイルを読み込んだあとファイルを閉じる */
-	fread(str, sizeof(char), size, fp);
-	fclose(fp);
-
-	/* 目当ての文字列の検索を行い、そこまで読み飛ばす */
-	p = strstr(str, "vertex 4 {");
-	p += strlen("vertex 4 {");
-
-	i = 0;
-	/* 該当する文字でなければ、*pを1つ進める */
-	while (!isNumberString(*p)) p++;
-
-	/* '}'までループを回す */
-	while (*p != '}')
-	{
-		/* 文字であればループを回す */
-		if (isNumberString(*p))
-		{
-			vertices[i] = atof(p);
-			
-			//printf("%f\n", vertices[i]);
-
-			/* 文字であればを*pを１つ進める */
-			while (isNumberString(*p)) p++;
-
-			i++;
-		}
-		p++;
-	}
-
-	i = 0;
-	data.vertexNumber = 0;
-	/* '('まで文字列を読み飛ばす */
-	p = strstr(p, "4 V(");
-	p += strlen("4 V(");
-	/* ')'までループを回す */
-	while (*p != ')')
-	{
-		if (isNumberString(*p))
-		{
-			indices[i] = atoi(p);
-			data.vertexNumber++;
-			printf("%d", indices[i]);
-
-			/* 該当する文字でなければ*pを進める */
-			while (!isNumberString(*p)) p++;
-
-			i++;
-		}
-		p++;
-	}
 	/* 4頂点インデックスであれば */
-	int i = 0;
+	i = 0;
 	if (data.vertexNumber == 4)
 	{
 		/* 3頂点*2の形に分解する */
-		triangleIndices[i][0] = indices[0];
-		triangleIndices[i][1] = indices[1];
-		triangleIndices[i][2] = indices[2];
+		shape.triangleIndices[i][0] = shape.indices[0];
+		shape.triangleIndices[i][1] = shape.indices[1];
+		shape.triangleIndices[i][2] = shape.indices[2];
 
 		i++;
 
-		triangleIndices[i][0] = indices[0];
-		triangleIndices[i][1] = indices[2];
-		triangleIndices[i][2] = indices[3];
+		shape.triangleIndices[i][0] = shape.indices[0];
+		shape.triangleIndices[i][1] = shape.indices[2];
+		shape.triangleIndices[i][2] = shape.indices[3];
 	}
 	
-	printf("\n%d %d %d\n", triangleIndices[0][0], triangleIndices[0][1], triangleIndices[0][2]);
-	printf("%d %d %d\n", triangleIndices[1][0], triangleIndices[1][1], triangleIndices[1][2]);
+	printf("\n%d %d %d\n", shape.triangleIndices[0][0], shape.triangleIndices[0][1], shape.triangleIndices[0][2]);
+	printf("%d %d %d\n", shape.triangleIndices[1][0], shape.triangleIndices[1][1], shape.triangleIndices[1][2]);
+
 
 	
+	
 
-	free(str);
+	free(string.s);
 	getchar();
 	return 0;
 }
@@ -140,4 +100,85 @@ bool isNumberString(char no)
 		return true;
 	}
 	return false;
+}
+
+bool FileOperation(char* fileName, STRING *str)
+{
+	FILE *fp;
+	long size;
+
+	/* ファイルが存在しなければエラー処理 */
+	if ((fp = fopen(fileName, "r")) == NULL)
+	{
+		printf("ファイルオープン失敗\n");
+		return false;
+	}
+
+	/* ファイルのサイズを求める*/
+	fseek(fp, 0, SEEK_END);
+	size = ftell(fp);
+	fseek(fp, 0, SEEK_SET);
+
+	/* サイズを元にファイル分のメモリ確保し、全て初期化 */
+	str->s = (char*)malloc(size + 1);
+	memset(str->s, '\0', size + 1);
+
+	/* ファイルを読み込んだあとファイルを閉じる */
+	fread(str->s, sizeof(char), size, fp);
+	fclose(fp);
+
+	return true;
+}
+
+void StringOperation()
+{
+	int i;
+
+	/* 目当ての文字列の検索を行い、そこまで読み飛ばす */
+	string.p = strstr(string.s, "vertex 4 {");
+	string.p += strlen("vertex 4 {");
+
+	i = 0;
+	/* 該当する文字でなければ、*pを1つ進める */
+	while (!isNumberString(*string.p)) string.p++;
+
+	/* '}'までループを回す */
+	while (*string.p != '}')
+	{
+		/* 文字であればループを回す */
+		if (isNumberString(*string.p))
+		{
+			shape.vertices[i] = atof(string.p);
+
+			//printf("%f\n", vertices[i]);
+
+			/* 文字であればを*pを１つ進める */
+			while (isNumberString(*string.p)) string.p++;
+
+			i++;
+		}
+		string.p++;
+	}
+
+	i = 0;
+	data.vertexNumber = 0;
+	/* '('まで文字列を読み飛ばす */
+	string.p = strstr(string.p, "4 V(");
+	string.p += strlen("4 V(");
+	/* ')'までループを回す */
+	while (*string.p != ')')
+	{
+		if (isNumberString(*string.p))
+		{
+			shape.indices[i] = atoi(string.p);
+			data.vertexNumber++;
+			printf("%d", shape.indices[i]);
+
+			/* 該当する文字でなければ*pを進める */
+			while (!isNumberString(*string.p)) string.p++;
+
+			i++;
+		}
+		string.p++;
+	}
 }
