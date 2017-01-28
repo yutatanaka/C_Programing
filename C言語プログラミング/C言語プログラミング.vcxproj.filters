@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="独Ｃ_第1章理解度チェック_1.cpp">
+    <ClCompile Include="独Ｃ_第1章理解度チェック_2.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>

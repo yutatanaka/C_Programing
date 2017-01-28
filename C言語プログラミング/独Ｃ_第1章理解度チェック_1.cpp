@@ -9,13 +9,13 @@ int InputNum();
 
 int main()
 {
-	int heavy = 0;
+	float weight = 0;
 
-	heavy = InputNum();
+	weight = InputNum();
 
-	heavy = heavy * 0.17;
+	weight = weight * 0.17;
 
-	printf("%d", heavy);
+	printf("%d", weight);
 
 	getchar();
 	return 0;
