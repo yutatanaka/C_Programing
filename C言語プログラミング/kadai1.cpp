@@ -4,6 +4,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+/* 3次元ベクトル */
+typedef struct
+{
+	float x, y, z;
+
+}VECTOR3;
+
 /* Header部分 */
 typedef struct
 {
@@ -16,21 +23,29 @@ typedef struct
 	unsigned int vertexOffset;	/* 頂点データへのオフセット */
 	unsigned int normalOffset;	/* 法線データへのオフセット */
 
-}DATAFORMAT;
-DATAFORMAT data;
+}HEADER;
+HEADER header;
 
 typedef struct
 {
-	float x, y, z;
-	
-}VECTOR3;
+	short vertexIndex[3];		/* 頂点インデックス */
+	short normalIndex;			/* 法線インデックス */
+
+	VECTOR3 Index[3];			/* 3角形を生成するインデックス */
+}TRIANGLE;
+TRIANGLE triangle;
 
 typedef struct
 {
-	VECTOR3 vertex[4];
-	float vertices[15];
-	int indices[4];
-	int triangleIndices[][4];
+	VECTOR3 vertex[4];			/* 3次元の頂点データ格納場所 */
+	VECTOR3 normal[4];			/* 3次元の法線データ格納場所 */
+}BODY;
+BODY body;
+
+typedef struct
+{	
+	float vertices[15];			/* 一時的なデータ格納場所(頂点データ) */
+	int indices[4];				/* 一時的なデータ格納場所(インデックスデータ) */
 }SHAPE;
 SHAPE shape;
 
@@ -42,17 +57,17 @@ STRING string;
 
 /* プロトタイプ宣言 */
 bool isNumberString(char);
-bool FileOperation(char*, STRING*);
+bool isFileOperation(char*, STRING*);
 void StringOperation();
 void TriangleSplit();
+void VectorCalculations();
 void Output();
 
 int main()
 {
-	int i, k;
 	char *fileName = "cube.mqo";
 
-	FileOperation(fileName, &string);
+	isFileOperation(fileName, &string);
 
 	StringOperation();
 
@@ -82,7 +97,8 @@ bool isNumberString(char no)
 	return false;
 }
 
-bool FileOperation(char* fileName, STRING *str)
+/* ファイル操作関数 */
+bool isFileOperation(char* fileName, STRING *str)
 {
 	FILE *fp;
 	long size;
@@ -110,6 +126,7 @@ bool FileOperation(char* fileName, STRING *str)
 	return true;
 }
 
+/* 文字列操作関数 */
 void StringOperation()
 {
 
@@ -140,7 +157,7 @@ void StringOperation()
 	}
 
 	i = 0;
-	data.vertexNumber = 0;
+	header.vertexNumber = 0;
 	/* '('まで文字列を読み飛ばす */
 	string.p = strstr(string.p, "4 V(");
 	string.p += strlen("4 V(");
@@ -150,8 +167,8 @@ void StringOperation()
 		if (isNumberString(*string.p))
 		{
 			shape.indices[i] = atoi(string.p);
-			data.vertexNumber++;
-			printf("%d", shape.indices[i]);
+			header.vertexNumber++;
+			//printf("%d", shape.indices[i]);
 
 			/* 該当する文字でなければ*pを進める */
 			while (!isNumberString(*string.p)) string.p++;
@@ -160,31 +177,48 @@ void StringOperation()
 		}
 		string.p++;
 	}
+
+	i = 0;
+	/* 3次元の頂点データをx, y, zの各項目に格納 */
+	for (int k = 0; k < 12; k += 3)
+	{
+		body.vertex[i].x = shape.vertices[k];
+		body.vertex[i].y = shape.vertices[k+1];
+		body.vertex[i].z = shape.vertices[k+2];
+		i++;
+	}
 }
 
+/* 四角を三角に分割する関数 */
 void TriangleSplit()
 {
 	/* 4頂点インデックスであれば */
 	int i = 0;
-	if (data.vertexNumber == 4)
+	if (header.vertexNumber == 4)
 	{
 		/* 3頂点*2の形に分解する */
-		shape.triangleIndices[i][0] = shape.indices[0];
-		shape.triangleIndices[i][1] = shape.indices[1];
-		shape.triangleIndices[i][2] = shape.indices[2];
-
-		i++;
-
-		shape.triangleIndices[i][0] = shape.indices[0];
-		shape.triangleIndices[i][1] = shape.indices[2];
-		shape.triangleIndices[i][2] = shape.indices[3];
+		triangle.Index[i].x = shape.indices[0];
+		triangle.Index[i].y = shape.indices[1];
+		triangle.Index[i].z = shape.indices[2];
+		triangle.Index[i].x = shape.indices[0];
+		triangle.Index[i].y = shape.indices[2];
+		triangle.Index[i].z = shape.indices[3];
 	}
 }
+/* ベクトルを求める関数 */
+void VectorCalculations()
+{
+}
 
+/* 出力関数 */
 void Output()
 {
+	for (int i = 0; i < 4; i++)
+	{
+		printf("%f %f %f\n", body.vertex[i].x, body.vertex[i].y, body.vertex[i].z);
+	}
 
-	printf("\n%d %d %d\n", shape.triangleIndices[0][0], shape.triangleIndices[0][1], shape.triangleIndices[0][2]);
-	printf("%d %d %d\n", shape.triangleIndices[1][0], shape.triangleIndices[1][1], shape.triangleIndices[1][2]);
+	//printf("\n%d %d %d\n", shape.triangleIndices[0][0], shape.triangleIndices[0][1], shape.triangleIndices[0][2]);
+	//printf("%d %d %d\n", shape.triangleIndices[1][0], shape.triangleIndices[1][1], shape.triangleIndices[1][2]);
 
 }
