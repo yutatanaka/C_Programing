@@ -205,7 +205,6 @@ void StringOperation()
 void TriangleSplit()
 {
 
-
 	/* 4頂点インデックスであれば */
 	int i = 0, k = 0;
 	if (header.vertexNumber == 4)
@@ -240,7 +239,6 @@ void VectorCalculations()
 	
 	SubVector3(&AB, body.vertex[0], body.vertex[1]);
 	SubVector3(&AC, body.vertex[0], body.vertex[2]);
-
 }
 
 void SubVector3(VECTOR3 *result, VECTOR3 start, VECTOR3 end)
