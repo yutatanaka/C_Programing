@@ -26,21 +26,23 @@ typedef struct
 }HEADER;
 HEADER header;
 
+/* トライアングル構造体 */
 typedef struct
 {
 	short vertexIndex[3];		/* 頂点インデックス */
 	short normalIndex;			/* 法線インデックス */
 
-	VECTOR3 Index[3];			/* 3角形を生成するインデックス */
 }TRIANGLE;
-TRIANGLE triangle;
+TRIANGLE *triangleList;
 
 typedef struct
 {
-	VECTOR3 vertex[4];			/* 3次元の頂点データ格納場所 */
-	VECTOR3 normal[4];			/* 3次元の法線データ格納場所 */
+	TRIANGLE *triangleList;		/* トライアングルリスト */
+	VECTOR3 *vertex;			/* 3次元の頂点データ格納場所 */
+	VECTOR3 *normal;			/* 3次元の法線データ格納場所 */
 }BODY;
 BODY body;
+
 
 typedef struct
 {	
@@ -61,11 +63,15 @@ bool isFileOperation(char*, STRING*);
 void StringOperation();
 void TriangleSplit();
 void VectorCalculations();
+void SubVector3(VECTOR3*, VECTOR3, VECTOR3);
 void Output();
 
 int main()
 {
 	char *fileName = "cube.mqo";
+	body.triangleList = (TRIANGLE *)malloc(sizeof(TRIANGLE) * 2);
+	body.vertex = (VECTOR3*)malloc(sizeof(VECTOR3) * 4);
+	body.normal = (VECTOR3*)malloc(sizeof(VECTOR3) * 4);
 
 	isFileOperation(fileName, &string);
 
@@ -73,9 +79,15 @@ int main()
 
 	TriangleSplit();
 
+	VectorCalculations();
+
 	Output();
 
 	free(string.s);
+	free(body.triangleList);
+	free(body.vertex);
+	free(body.normal);
+
 	getchar();
 	return 0;
 }
@@ -192,22 +204,50 @@ void StringOperation()
 /* 四角を三角に分割する関数 */
 void TriangleSplit()
 {
+
+
 	/* 4頂点インデックスであれば */
-	int i = 0;
+	int i = 0, k = 0;
 	if (header.vertexNumber == 4)
 	{
+		/*
+		short *indexs = body.triangleList[k].vertexIndex ;
+
+		indexs[i] = shape.indices[0];
+		indexs[i] = shape.indices[1];
+		indexs[i] = shape.indices[2];
+		*/
+
 		/* 3頂点*2の形に分解する */
-		triangle.Index[i].x = shape.indices[0];
-		triangle.Index[i].y = shape.indices[1];
-		triangle.Index[i].z = shape.indices[2];
-		triangle.Index[i].x = shape.indices[0];
-		triangle.Index[i].y = shape.indices[2];
-		triangle.Index[i].z = shape.indices[3];
+		body.triangleList[k].vertexIndex[i] = shape.indices[0];
+		body.triangleList[k].vertexIndex[i] = shape.indices[1];
+		body.triangleList[k].vertexIndex[i] = shape.indices[2];
+		k++;
+		i++;
+		body.triangleList[k].vertexIndex[i] = shape.indices[0];
+		body.triangleList[k].vertexIndex[i] = shape.indices[3];
+		body.triangleList[k].vertexIndex[i] = shape.indices[2];
 	}
 }
 /* ベクトルを求める関数 */
 void VectorCalculations()
 {
+	VECTOR3 AB, AC;
+	VECTOR3 A = body.vertex[0];
+	VECTOR3 B = body.vertex[1];
+	VECTOR3 C = body.vertex[2];
+	//VECTOR3 AB = B - A;
+	
+	SubVector3(&AB, body.vertex[0], body.vertex[1]);
+	SubVector3(&AC, body.vertex[0], body.vertex[2]);
+
+}
+
+void SubVector3(VECTOR3 *result, VECTOR3 start, VECTOR3 end)
+{
+	result->x = end.x - start.x;
+	result->y = end.y - start.y;
+	result->z = end.z - start.z;
 }
 
 /* 出力関数 */
